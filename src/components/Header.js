@@ -111,7 +111,7 @@ function Header({counter}) {
             <HeartIcon className="h-6 cursor-pointer" />
             <p className="text-md font-light">{t("home:nav_favorites")}</p>
           </div>
-          <div className="relative flex flex-col items-center space-y-1">
+          <div onClick={() => router.push("/basket")} className="relative flex flex-col items-center space-y-1">
             <span className="absolute top-0 right-4 bg-gray-900 h-4 w-4 text-center rounded-full text-xs">{items.length}</span>
             <ShoppingCartIcon className="h-6 cursor-pointer" />
             <p className="text-md font-light">{t("home:nav_bascket")}</p>

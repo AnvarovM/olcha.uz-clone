@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { StarIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import Currency from "react-currency-format";
-import { likeToFavorite } from "../../slices/likedSlice";
 import { useDispatch } from "react-redux";
 
 const Favorite = ({

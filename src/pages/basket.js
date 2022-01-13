@@ -1,15 +1,14 @@
 import { useReducer } from "react";
 import Head from "next/head";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 // next.js
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import Favorite from "../components/Favorite/Favorite";
+import Basket from "../components/Basket/Basket";
 
 import { useSelector } from "react-redux";
-import { likedItems } from "../slices/likedSlice";
+import { selectItems  } from "../slices/basketSlice";
 
 export async function getServerSideProps({ locale }) {
   const products = await fetch("https://fakestoreapi.com/products").then(
@@ -26,7 +25,7 @@ export async function getServerSideProps({ locale }) {
 
 export default function Home() {
   const { t } = useTranslation();
-  const liked = useSelector(likedItems);
+  const basket = useSelector(selectItems);
 
   return (
     <div className="">
@@ -41,12 +40,12 @@ export default function Home() {
       <Header t={t} />
       <div className="flex flex-col space-y-5 max-w-screen-2xl mx-auto h-screen">
         <h1 className="text-2xl border-b p-4">
-          {liked.length === 0
-            ? "Sizning yoqtirganlarningiz hozircha yo'q"
-            : "Yoqtirilganlar ro'yxati"}
+          {basket.length === 0
+            ? "Savat hozircha bo`sh"
+            : "Savatdagilar ro`yxati"}
         </h1>
-        {liked.map((item, i) => (
-          <Favorite
+        {basket.map((item, i) => (
+          <Basket
             key={i}
             id={item.id}
             title={item.title}
